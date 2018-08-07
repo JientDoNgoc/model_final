@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_144219) do
+ActiveRecord::Schema.define(version: 2018_08_07_152033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2018_08_07_144219) do
     t.integer "position"
     t.string "image_URL"
     t.integer "like_count", default: 0
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_images_on_article_id"
   end
 
   create_table "texts", force: :cascade do |t|
@@ -34,6 +36,8 @@ ActiveRecord::Schema.define(version: 2018_08_07_144219) do
     t.integer "position"
     t.text "sentence"
     t.integer "like_count", default: 0
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_texts_on_article_id"
   end
 
 end
